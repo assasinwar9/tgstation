@@ -1,6 +1,6 @@
 /datum/job/ai
 	title = "AI"
-	flag = AI_JF
+//	flag = AI_JF
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	department_flag = ENGSEC
 	faction = "Station"
@@ -13,7 +13,7 @@
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SILICON
-	display_order = JOB_DISPLAY_ORDER_AI
+//	display_order = JOB_DISPLAY_ORDER_AI
 	var/do_special_check = TRUE
 
 /datum/job/ai/equip(mob/living/carbon/human/H, visualsOnly, announce, latejoin, datum/outfit/outfit_override, client/preference_source = null)

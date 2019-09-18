@@ -55,8 +55,8 @@ GLOBAL_LIST_INIT(security_positions, list(
 
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
-	"AI",
-	"Cyborg",
+//	"AI",
+//	"Cyborg",
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
@@ -81,7 +81,8 @@ GLOBAL_PROTECT(exp_jobsmap)
 GLOBAL_PROTECT(exp_specialmap)
 
 /proc/guest_jobbans(job)
-	return ((job in GLOB.command_positions) || (job in GLOB.nonhuman_positions) || (job in GLOB.security_positions))
+//	return ((job in GLOB.command_positions) || (job in GLOB.nonhuman_positions) || (job in GLOB.security_positions))
+	return ((job in GLOB.command_positions) || (job in GLOB.security_positions))
 
 
 

@@ -169,9 +169,10 @@
 		if(rank in GLOB.civilian_positions)
 			civ[name] = rank
 			department = 1
-		if(rank in GLOB.nonhuman_positions)
+/*		if(rank in GLOB.nonhuman_positions)
 			bot[name] = rank
 			department = 1
+*/
 		if(!department && !(name in heads))
 			misc[name] = rank
 	if(heads.len > 0)
