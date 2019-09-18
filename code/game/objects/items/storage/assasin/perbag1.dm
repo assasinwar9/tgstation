@@ -9,8 +9,9 @@
 /obj/item/storage/backpack/assasin/perbag1/industrialp/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-//	STR.max_w_class = WEIGHT_CLASS_GIGANTIC
+	STR.max_w_class = WEIGHT_CLASS_GIGANTIC
 	STR.max_combined_w_class = 30
+	STR.set_holdable(null, list(/obj/item/storage, /obj/item/reagent_containers,)) //muh recursive backpacks)
 
 /obj/item/storage/backpack/assasin/perbag1/industrialp/PopulateContents()
 	var/savefile/SS = new("Proof/perbag1/[ownerkey].sav")
@@ -37,14 +38,12 @@
 	max_amount = 1
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
-/obj/item/stack/PERsafeSpawner/attack_self(mob/user as mob)
-	src.add_fingerprint(user)
-
-	if(!istype(user.loc,/turf)) return 0
-
+/obj/item/stack/perbag1spawner/attack_self(mob/user as mob)
 	to_chat(usr, "Spawning persistence backpack lvl 1")
 	var/obj/item/storage/backpack/assasin/perbag1/industrialp/PS = new /obj/item/storage/backpack/assasin/perbag1/industrialp ( usr.loc )
 	PS.ownerkey = usr.ckey
+	var/savefile/SS = new("Proof/perbag1/[PS.ownerkey].sav")
+	SS["src.contents"] >> PS.contents
 	to_chat(usr, "Spawned the persistence backpack lvl 1 with ID = [PS.ownerkey]")
 	PS.add_fingerprint(usr)
 	use(1)
