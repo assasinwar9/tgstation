@@ -155,8 +155,7 @@
 	if(custom_materials && custom_materials.len)
 		var/temp_list = list()
 		for(var/i in custom_materials)
-			var/datum/material/material = getmaterialref(i) || i
-			temp_list[material] = custom_materials[material] //Get the proper instanced version
+			temp_list[getmaterialref(i)] = custom_materials[i] //Get the proper instanced version
 
 		custom_materials = null //Null the list to prepare for applying the materials properly
 		set_custom_materials(temp_list)
@@ -213,7 +212,7 @@
 
 	return ..()
 
-/atom/proc/handle_ricochet(obj/item/projectile/P)
+/atom/proc/handle_ricochet(obj/projectile/P)
 	return
 
 ///Can the mover object pass this atom, while heading for the target turf
@@ -414,7 +413,7 @@
   *
   * Default behaviour is to send the COMSIG_ATOM_BULLET_ACT and then call on_hit() on the projectile
   */
-/atom/proc/bullet_act(obj/item/projectile/P, def_zone)
+/atom/proc/bullet_act(obj/projectile/P, def_zone)
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, P, def_zone)
 	. = P.on_hit(src, 0, def_zone)
 
@@ -597,12 +596,6 @@
 	if(!blood_dna)
 		return FALSE
 	return add_blood_DNA(blood_dna)
-
-///wash cream off this object
-///
-///(for the love of space jesus please make this a component)
-/atom/proc/wash_cream()
-	return TRUE
 
 ///Is this atom in space
 /atom/proc/isinspace()
