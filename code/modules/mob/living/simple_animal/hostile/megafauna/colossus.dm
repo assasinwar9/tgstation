@@ -26,12 +26,14 @@ Difficulty: Very Hard
 	desc = "A monstrous creature protected by heavy shielding."
 	health = 2500
 	maxHealth = 2500
-	attacktext = "judges"
+	attack_verb_continuous = "judges"
+	attack_verb_simple = "judge"
 	attack_sound = 'sound/magic/clockwork/ratvar_attack.ogg'
 	icon_state = "eva"
 	icon_living = "eva"
 	icon_dead = ""
-	friendly = "stares down"
+	friendly_verb_continuous = "stares down"
+	friendly_verb_simple = "stare down"
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
 	speak_emote = list("roars")
 	armour_penetration = 40
@@ -43,8 +45,9 @@ Difficulty: Very Hard
 	pixel_x = -32
 	del_on_death = TRUE
 	gps_name = "Angelic Signal"
-	medal_type = BOSS_MEDAL_COLOSSUS
-	score_type = COLOSSUS_SCORE
+	achievement_type = /datum/award/achievement/boss/colussus_kill
+	crusher_achievement_type = /datum/award/achievement/boss/colussus_crusher
+	score_achievement_type = /datum/award/score/colussus_score
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/colossus/crusher)
 	loot = list(/obj/structure/closet/crate/necropolis/colossus)
 	deathmessage = "disintegrates, leaving a glowing core in its wake."
@@ -586,7 +589,7 @@ Difficulty: Very Hard
 					H.set_species(/datum/species/shadow, 1)
 					H.regenerate_limbs()
 					H.regenerate_organs()
-					H.revive(1,0)
+					H.revive(full_heal = TRUE, admin_revive = FALSE)
 					ADD_TRAIT(H, TRAIT_BADDNA, MAGIC_TRAIT) //Free revives, but significantly limits your options for reviving except via the crystal
 					H.grab_ghost(force = TRUE)
 
@@ -630,14 +633,18 @@ Difficulty: Very Hard
 	icon_living = "lightgeist"
 	icon_dead = "butterfly_dead"
 	turns_per_move = 1
-	response_help = "waves away"
-	response_disarm = "brushes aside"
-	response_harm = "disrupts"
+	response_help_continuous = "waves away"
+	response_help_simple = "wave away"
+	response_disarm_continuous = "brushes aside"
+	response_disarm_simple = "brush aside"
+	response_harm_continuous = "disrupts"
+	response_harm_simple = "disrupt"
 	speak_emote = list("oscillates")
 	maxHealth = 2
 	health = 2
 	harm_intent_damage = 1
-	friendly = "mends"
+	friendly_verb_continuous = "mends"
+	friendly_verb_simple = "mend"
 	density = FALSE
 	movement_type = FLYING
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -654,7 +661,6 @@ Difficulty: Very Hard
 	faction = list("neutral")
 	del_on_death = TRUE
 	unsuitable_atmos_damage = 0
-	movement_type = FLYING
 	minbodytemp = 0
 	maxbodytemp = 1500
 	obj_damage = 0
